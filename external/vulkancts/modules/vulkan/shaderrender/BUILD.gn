@@ -1,0 +1,78 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external vkutil build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_shaderrender_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+
+  #defines += [ "_XOPEN_SOURCE=600" ]
+}
+
+ohos_source_set("deqp_vk_shaderrender_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRender.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRender.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderBuiltinVarTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderBuiltinVarTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderDerivateTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderDerivateTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderDiscardTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderDiscardTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderIndexingTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderIndexingTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderInvarianceTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderInvarianceTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderLimitTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderLimitTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderLoopTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderLoopTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderMatrixTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderMatrixTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderOperatorTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderOperatorTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderReturnTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderReturnTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderStructTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderStructTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderSwitchTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderSwitchTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderTextureFunctionTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderTextureFunctionTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderTextureGatherTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender/vktShaderRenderTextureGatherTests.hpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs += [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderrender",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/util",
+  ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan:libdeqp_vkutil",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_shaderrender_config" ]
+}
+ohos_static_library("libdeqp_vk_shaderrender") {
+  deps = [ ":deqp_vk_shaderrender_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}
