@@ -1,0 +1,84 @@
+// Copyright 2018-2022 The Khronos Group Inc.
+//
+// SPDX-License-Identifier: CC-BY-4.0
+
+include::{generated}/meta/{refprefix}VK_EXT_video_encode_h264.adoc[]
+
+=== Other Extension Metadata
+
+*Last Modified Date*::
+    2022-09-18
+*IP Status*::
+    No known IP claims.
+*Contributors*::
+  - Ahmed Abdelkhalek, AMD
+  - George Hao, AMD
+  - Jake Beju, AMD
+  - Peter Fang, AMD
+  - Ping Liu, Intel
+  - Srinath Kumarapuram, NVIDIA
+  - Tony Zlatinski, NVIDIA
+  - Yang Liu, AMD
+  - Daniel Rakos, RasterGrid
+
+=== Description
+
+This extension builds upon the `apiext:VK_KHR_video_encode_queue` extension
+by adding support for encoding elementary video stream sequences compliant
+with the H.264/AVC video compression standard.
+
+include::{generated}/interfaces/VK_EXT_video_encode_h264.adoc[]
+
+=== Version History
+
+  * Revision 0, 2018-7-23 (Ahmed Abdelkhalek)
+  ** Initial draft
+  * Revision 0.5, 2020-02-13 (Tony Zlatinski)
+  ** General Spec cleanup
+  ** Added DPB structures
+  ** Change the VCL frame encode structure
+  ** Added a common Non-VCL Picture Paramarameters structure
+  * Revision 1, 2021-03-29 (Tony Zlatinski)
+  ** Spec and API updates
+  * Revision 2, August 1 2021 (Srinath Kumarapuram)
+  ** Rename `VkVideoEncodeH264CapabilitiesFlagsEXT` to
+     `VkVideoEncodeH264CapabilityFlagsEXT` and
+     `VkVideoEncodeH264CapabilitiesFlagsEXT` to
+     `VkVideoEncodeH264CapabilityFlagsEXT`, following Vulkan naming
+     conventions.
+  * Revision 3, 2021-12-08 (Ahmed Abdelkhalek)
+  ** Rate control updates
+  * Revision 4, 2022-02-04 (Ahmed Abdelkhalek)
+  ** Align VkVideoEncodeH264VclFrameInfoEXT structure to similar one in
+     VK_EXT_video_encode_h265 extension
+  * Revision 5, 2022-02-10 (Ahmed Abdelkhalek)
+  ** Updates to encode capability interface
+  * Revision 6, 2022-03-16 (Ahmed Abdelkhalek)
+  ** Relocate Std header version reporting/requesting from this extension to
+     VK_KHR_video_queue extension.
+  ** Remove redundant maxPictureSizeInMbs from
+     VkVideoEncodeH264SessionCreateInfoEXT.
+  ** Remove the now empty VkVideoEncodeH264SessionCreateInfoEXT.
+  * Revision 7, 2022-04-06 (Ahmed Abdelkhalek)
+  ** Add capability flag to report support to use B frame in L1 reference
+     list.
+  ** Add capability flag to report support for disabling SPS
+     direct_8x8_inference_flag.
+  * Revision 8, 2022-07-18 (Daniel Rakos)
+  ** Replace `VkVideoEncodeH264RateControlStructureFlagBitsEXT` bit enum
+     with `VkVideoEncodeH264RateControlStructureEXT` enum
+  ** Rename `VkVideoEncodeH264ProfileEXT` to
+     `VkVideoEncodeH264ProfileInfoEXT`
+  ** Rename `VkVideoEncodeH264ReferenceListsEXT` to
+     `VkVideoEncodeH264ReferenceListsInfoEXT`
+  ** Rename `VkVideoEncodeH264EmitPictureParametersEXT` to
+     `VkVideoEncodeH264EmitPictureParametersInfoEXT`
+  ** Rename `VkVideoEncodeH264NaluSliceEXT` to
+     `VkVideoEncodeH264NaluSliceInfoEXT`
+  * Revision 9, 2022-09-18 (Daniel Rakos)
+  ** Rename `spsStdCount`, `pSpsStd`, `ppsStdCount`, and `pPpsStd` to
+     `stdSPSCount`, `pStdSPSs`, `stdPPSCount`, and `pStdPPSs`, respectively,
+     in `VkVideoEncodeH264SessionParametersAddInfoEXT`
+  ** Rename `maxSpsStdCount` and `maxPpsStdCount` to `maxStdSPSCount` and
+     `maxStdPPSCount`, respectively, in
+     `VkVideoEncodeH264SessionParametersCreateInfoEXT`
