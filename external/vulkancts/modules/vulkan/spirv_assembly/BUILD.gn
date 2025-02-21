@@ -1,0 +1,133 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external vkutil build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_spirv_assembly_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+  defines += [
+    #"_XOPEN_SOURCE=600",
+    "FE_TONEAREST=0x00000000",
+    "FE_UPWARD=0x00400000",
+    "FE_DOWNWARD=0x00800000",
+    "FE_TOWARDZERO=0x00c00000",
+  ]
+}
+
+ohos_source_set("deqp_vk_spirv_assembly_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsm16bitStorageTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsm16bitStorageTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsm64bitCompareTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsm64bitCompareTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsm8bitStorageTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsm8bitStorageTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmCompositeInsertTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmCompositeInsertTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmComputeShaderCase.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmComputeShaderCase.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmComputeShaderTestUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmComputeShaderTestUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmConditionalBranchTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmConditionalBranchTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmCrossStageInterfaceTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmCrossStageInterfaceTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmEmptyStructTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmEmptyStructTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmFloatControlsExtensionlessTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmFloatControlsExtensionlessTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmFloatControlsTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmFloatControlsTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmFromHlslTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmFromHlslTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmGraphicsShaderTestUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmGraphicsShaderTestUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmImageSamplerTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmImageSamplerTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmIndexingTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmIndexingTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmInstructionTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmInstructionTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmIntegerDotProductTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmIntegerDotProductTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmLoopDepInfTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmLoopDepInfTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmLoopDepLenTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmLoopDepLenTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmNonSemanticInfoTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmNonSemanticInfoTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmPhysicalStorageBufferPointerTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmPhysicalStorageBufferPointerTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmPointerParameterTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmPointerParameterTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmPtrAccessChainTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmPtrAccessChainTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmSignedIntCompareTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmSignedIntCompareTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmSignedOpTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmSignedOpTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmSpirvVersion1p4Tests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmSpirvVersion1p4Tests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmSpirvVersionTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmSpirvVersionTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmTerminateInvocationTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmTerminateInvocationTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmTrinaryMinMaxTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmTrinaryMinMaxTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmTypeTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmTypeTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmUboMatrixPaddingTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmUboMatrixPaddingTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmUtils.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmUtils.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmVariableInitTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmVariableInitTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmVariablePointersTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmVariablePointersTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmVaryingNameTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmVaryingNameTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmVectorShuffleTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmVectorShuffleTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmWorkgroupMemoryTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly/vktSpvAsmWorkgroupMemoryTests.hpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs += [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/spirv_assembly",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber",
+    "//third_party/vk-gl-cts/external/amber/src/include",
+    "//third_party/spirv-headers/include",
+  ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/amber/src/src:libdeqp_amber",
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan:libdeqp_vkutil",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber:libdeqp_vk_amber",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_spirv_assembly_config" ]
+}
+ohos_static_library("libdeqp_vk_spirv_assembly") {
+  deps = [ ":deqp_vk_spirv_assembly_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}
