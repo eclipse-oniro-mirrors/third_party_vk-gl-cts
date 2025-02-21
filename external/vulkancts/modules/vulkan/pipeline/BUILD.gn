@@ -1,0 +1,162 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external vkutil build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_pipeline_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+
+  #defines += [ "_XOPEN_SOURCE=600" ]
+}
+
+ohos_source_set("deqp_vk_pipeline_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineBindPointTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineBindPointTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineBlendOperationAdvancedTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineBlendOperationAdvancedTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineBlendTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineBlendTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineCacheTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineCacheTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineClearUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineClearUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineColorWriteEnableTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineColorWriteEnableTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineCombinationsIterator.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineCreationCacheControlTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineCreationCacheControlTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineCreationFeedbackTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineCreationFeedbackTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineDepthRangeUnrestrictedTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineDepthRangeUnrestrictedTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineDepthTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineDepthTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineDerivativeTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineDerivativeTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineDynamicOffsetTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineDynamicOffsetTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineEarlyDestroyTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineEarlyDestroyTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineExecutablePropertiesTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineExecutablePropertiesTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineExtendedDynamicStateTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineExtendedDynamicStateTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineFramebufferAttachmentTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineFramebufferAttachmentTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineImageSamplingInstance.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineImageSamplingInstance.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineImageTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineImageTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineImageUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineImageUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineImageViewTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineImageViewTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineInputAssemblyTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineInputAssemblyTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineInterfaceMatchingTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineInterfaceMatchingTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineLogicOpTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineLogicOpTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMakeUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMakeUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMatchedAttachmentsTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMatchedAttachmentsTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMaxVaryingsTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMaxVaryingsTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMiscTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMiscTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleBase.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleBase.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleBaseResolve.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleBaseResolve.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleBaseResolveAndPerSampleFetch.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleBaseResolveAndPerSampleFetch.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleImageTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleImageTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleInterpolationTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleInterpolationTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleMixedAttachmentSamplesTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleMixedAttachmentSamplesTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleSampleLocationsExtTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleSampleLocationsExtTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleShaderBuiltInTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleShaderBuiltInTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleShaderFragmentMaskTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleShaderFragmentMaskTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleTestsUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineMultisampleTestsUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineNoPositionTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineNoPositionTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelinePushConstantTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelinePushConstantTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelinePushDescriptorTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelinePushDescriptorTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineReferenceRenderer.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineReferenceRenderer.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineRenderToImageTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineRenderToImageTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineSampleLocationsUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineSampleLocationsUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineSamplerBorderSwizzleTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineSamplerBorderSwizzleTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineSamplerTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineSamplerTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineSpecConstantTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineSpecConstantTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineSpecConstantUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineSpecConstantUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineStencilExportTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineStencilExportTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineStencilTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineStencilTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineTimestampTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineTimestampTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineUniqueRandomIterator.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineVertexInputTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineVertexInputTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineVertexUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline/vktPipelineVertexUtil.hpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs += [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/pipeline",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/util",
+    "//third_party/vk-gl-cts/external/amber/src/include",
+  ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/amber/src/src:libdeqp_amber",
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan:libdeqp_vkutil",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+    "//third_party/vk-gl-cts/framework/referencerenderer:libdeqp_referencerenderer",
+  ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_pipeline_config" ]
+}
+ohos_static_library("libdeqp_vk_pipeline") {
+  deps = [ ":deqp_vk_pipeline_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}

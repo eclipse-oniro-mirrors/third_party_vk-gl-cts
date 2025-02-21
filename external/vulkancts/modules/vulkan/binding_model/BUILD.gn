@@ -1,0 +1,66 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external vkutil build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_binding_model_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+
+  #defines += [ "_XOPEN_SOURCE=600" ]
+}
+
+ohos_source_set("deqp_vk_binding_model_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingBufferDeviceAddressTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingBufferDeviceAddressTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingDescriptorCopyTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingDescriptorCopyTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingDescriptorSetRandomTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingDescriptorSetRandomTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingDescriptorUpdateASTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingDescriptorUpdateASTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingDescriptorUpdateTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingDescriptorUpdateTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingDynamicOffsetTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingDynamicOffsetTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingModelTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingModelTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingShaderAccessTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingShaderAccessTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingValveMutableTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model/vktBindingValveMutableTests.hpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs += [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/binding_model",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber",
+  ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan:libdeqp_vkutil",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_binding_model_config" ]
+}
+ohos_static_library("libdeqp_vk_binding_model") {
+  deps = [ ":deqp_vk_binding_model_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}

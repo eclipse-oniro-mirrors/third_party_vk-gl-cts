@@ -1,0 +1,61 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external amber build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_amber_config") {
+  cflags_cc = deqp_common_cflags_cc
+  cflags_cc += [ "-Wno-unknown-pragmas" ]
+  defines = deqp_common_defines
+  defines += [ "AMBER_CTS_VULKAN_HEADER=1" ]
+
+  #defines += [ "_XOPEN_SOURCE=600" ]
+}
+
+ohos_source_set("deqp_vk_amber_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber/vktAmberGlslTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber/vktAmberGlslTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber/vktAmberGraphicsFuzzTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber/vktAmberGraphicsFuzzTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber/vktAmberHelper.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber/vktAmberHelper.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber/vktAmberTestCase.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber/vktAmberTestCase.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber/vktAmberTestCaseUtil.cpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs += [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber",
+    "//third_party/vk-gl-cts/external/amber/src/include",
+    "//third_party/vulkan-headers/include",
+  ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/amber/src/src:libdeqp_amber",
+    "//third_party/vk-gl-cts/external/amber/src/src/vulkan:libdeqp_amberenginevulkan",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_amber_config" ]
+}
+ohos_static_library("libdeqp_vk_amber") {
+  deps = [ ":deqp_vk_amber_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}
