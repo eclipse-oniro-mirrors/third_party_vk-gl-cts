@@ -1,0 +1,86 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external vkutil build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_synchronization_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+
+  #defines += [ "_XOPEN_SOURCE=600" ]
+}
+
+ohos_source_set("deqp_vk_synchronization_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktGlobalPriorityQueueTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktGlobalPriorityQueueTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktGlobalPriorityQueueUtils.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktGlobalPriorityQueueUtils.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationBasicEventTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationBasicEventTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationBasicFenceTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationBasicFenceTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationBasicSemaphoreTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationBasicSemaphoreTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationCrossInstanceSharingTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationCrossInstanceSharingTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationImageLayoutTransitionTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationImageLayoutTransitionTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationInternallySynchronizedObjectsTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationInternallySynchronizedObjectsTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationNoneStageTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationNoneStageTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationOperation.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationOperation.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationOperationMultiQueueTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationOperationMultiQueueTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationOperationSingleQueueTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationOperationSingleQueueTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationOperationTestData.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationSignalOrderTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationSignalOrderTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationSmokeTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationSmokeTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationTimelineSemaphoreTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationTimelineSemaphoreTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationWin32KeyedMutexTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization/vktSynchronizationWin32KeyedMutexTests.hpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs += [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/synchronization",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/util",
+  ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan:libdeqp_vkutil",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  ]
+  external_deps = [ "graphic_surface:surface" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_synchronization_config" ]
+}
+ohos_static_library("libdeqp_vk_synchronization") {
+  deps = [ ":deqp_vk_synchronization_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}
