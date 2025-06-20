@@ -1,0 +1,11 @@
+// Copyright 2022-2024 The Khronos Group Inc.
+//
+// SPDX-License-Identifier: CC-BY-4.0
+
+// Common Valid Usage
+// Common to vkCmdEndQuery* commands
+  * [[VUID-{refpage}-None-07007]]
+    If called within a subpass of a render pass instance, the corresponding
+    fname:vkCmdBeginQuery* command must: have been called previously within
+    the same subpass
+// Common Valid Usage
