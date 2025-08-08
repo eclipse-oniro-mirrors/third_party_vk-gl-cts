@@ -1,0 +1,81 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external vkutil build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_sparse_resources_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+
+  #defines += [ "_XOPEN_SOURCE=600" ]
+}
+
+ohos_source_set("deqp_vk_sparse_resources_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesBase.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesBase.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesBufferMemoryAliasing.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesBufferMemoryAliasing.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesBufferSparseBinding.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesBufferSparseBinding.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesBufferSparseResidency.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesBufferSparseResidency.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesBufferTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesBufferTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesImageAlignedMipSize.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesImageAlignedMipSize.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesImageBlockShapes.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesImageBlockShapes.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesImageMemoryAliasing.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesImageMemoryAliasing.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesImageSparseBinding.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesImageSparseBinding.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesImageSparseResidency.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesImageSparseResidency.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesMipmapSparseResidency.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesMipmapSparseResidency.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesQueueBindSparseTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesQueueBindSparseTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesShaderIntrinsics.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesShaderIntrinsics.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesShaderIntrinsicsBase.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesShaderIntrinsicsBase.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesShaderIntrinsicsSampled.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesShaderIntrinsicsSampled.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesShaderIntrinsicsStorage.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesShaderIntrinsicsStorage.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesTestsUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources/vktSparseResourcesTestsUtil.hpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs += [ "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/sparse_resources" ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan:libdeqp_vkutil",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_sparse_resources_config" ]
+}
+ohos_static_library("libdeqp_vk_sparse_resources") {
+  deps = [ ":deqp_vk_sparse_resources_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}
