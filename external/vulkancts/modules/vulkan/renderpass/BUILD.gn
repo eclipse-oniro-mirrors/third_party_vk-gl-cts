@@ -1,0 +1,90 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external renderpass build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_renderpass_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+
+  #defines += [ "_XOPEN_SOURCE=600" ]
+}
+
+ohos_source_set("deqp_vk_renderpass_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktDynamicRenderingRandomTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktDynamicRenderingRandomTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktDynamicRenderingTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktDynamicRenderingTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktDynamicRenderingUnusedAttachmentsTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktDynamicRenderingUnusedAttachmentsTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassDepthStencilResolveTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassDepthStencilResolveTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassDepthStencilWriteConditionsTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassDepthStencilWriteConditionsTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassDitheringTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassDitheringTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassFragmentDensityMapTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassFragmentDensityMapTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassLoadStoreOpNoneTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassLoadStoreOpNoneTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassMultipleSubpassesMultipleCommandBuffersTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassMultipleSubpassesMultipleCommandBuffersTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassMultisampleResolveTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassMultisampleResolveTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassMultisampleTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassMultisampleTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassSampleReadTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassSampleReadTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassSparseRenderTargetTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassSparseRenderTargetTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassSubpassDependencyTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassSubpassDependencyTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassSubpassMergeFeedbackTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassSubpassMergeFeedbackTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassTestsUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassTestsUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassUnusedAttachmentSparseFillingTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassUnusedAttachmentSparseFillingTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassUnusedAttachmentTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassUnusedAttachmentTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassUnusedClearAttachmentTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass/vktRenderPassUnusedClearAttachmentTests.hpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs += [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/renderpass",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw",
+  ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan:libdeqp_vkutil",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw:libdeqp_vk_draw",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_renderpass_config" ]
+}
+ohos_static_library("libdeqp_vk_renderpass") {
+  deps = [ ":deqp_vk_renderpass_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}
