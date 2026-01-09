@@ -1,0 +1,94 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external vkutil build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_image_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+
+  #defines += [ "_XOPEN_SOURCE=600" ]
+}
+
+ohos_source_set("deqp_vk_image_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageAstcDecodeModeTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageAstcDecodeModeTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageAtomicOperationTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageAtomicOperationTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageAtomicSpirvShaders.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageAtomicSpirvShaders.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageCompressionTranscodingSupport.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageCompressionTranscodingSupport.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageDepthStencilDescriptorTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageDepthStencilDescriptorTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageExtendedUsageBitTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageExtendedUsageBitTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageHostImageCopyTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageHostImageCopyTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageLoadStoreTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageLoadStoreTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageLoadStoreUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageLoadStoreUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageMisalignedCubeTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageMisalignedCubeTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageMismatchedFormatsTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageMismatchedFormatsTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageMismatchedWriteOpTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageMismatchedWriteOpTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageMultisampleLoadStoreTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageMultisampleLoadStoreTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageMutableTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageMutableTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageQualifiersTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageQualifiersTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageSampleCompressedTextureTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageSampleCompressedTextureTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageSampleDrawnCubeFaceTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageSampleDrawnCubeFaceTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageSizeTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageSizeTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageSubresourceLayoutTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageSubresourceLayoutTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageTestsUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageTestsUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageTexture.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageTexture.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageTranscodingSupportTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageTranscodingSupportTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageTransfer.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image/vktImageTransfer.hpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs +=
+      [ "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/image" ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan:libdeqp_vkutil",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_image_config" ]
+}
+ohos_static_library("libdeqp_vk_image") {
+  deps = [ ":deqp_vk_image_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}
