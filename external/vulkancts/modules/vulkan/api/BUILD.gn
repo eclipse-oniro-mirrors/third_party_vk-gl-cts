@@ -1,0 +1,84 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external vkutil build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_api_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+
+  #defines += [ "_XOPEN_SOURCE=600" ]
+}
+
+ohos_source_set("deqp_vk_api_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiBufferAndImageAllocationUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiBufferComputeInstance.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiBufferMarkerTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiBufferMemoryRequirementsTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiBufferTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiBufferViewAccessTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiBufferViewCreateTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiCommandBuffersTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiComputeInstanceResultBuffer.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiCopiesAndBlittingTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiDescriptorPoolTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiDescriptorSetTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiDeviceDrmPropertiesTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiDeviceInitializationTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiDriverPropertiesTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiExternalMemoryTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiFeatureInfo.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiFillBufferTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiFormatPropertiesExtendedKHRtests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiGetDeviceProcAddrTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiGetMemoryCommitment.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiGranularityTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiImageClearingTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiImageCompressionControlTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiMaintenance3Check.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiMemoryRequirementInvarianceTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiNullHandleTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiObjectManagementTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiPhysicalDeviceFormatPropertiesMaint5Tests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiPipelineTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiSmokeTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiToolingInfoTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api/vktApiVersionCheck.cpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs += [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/api",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/util",
+  ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan:libdeqp_vkutil",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/util:libdeqp_vk_util",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  ]
+  external_deps = [ "graphic_surface:surface" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_api_config" ]
+}
+ohos_static_library("libdeqp_vk_api") {
+  deps = [ ":deqp_vk_api_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}

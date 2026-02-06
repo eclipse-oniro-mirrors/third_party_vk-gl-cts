@@ -1,0 +1,111 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external vkutil build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_draw_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+
+  #defines += [ "_XOPEN_SOURCE=600" ]
+}
+
+ohos_source_set("deqp_vk_draw_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktBasicDrawTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktBasicDrawTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawAhbTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawAhbTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawBaseClass.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawBaseClass.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawBufferObjectUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawBufferObjectUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawConcurrentTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawConcurrentTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawCreateInfoUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawCreateInfoUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawDepthBiasTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawDepthBiasTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawDepthClampTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawDepthClampTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawDifferingInterpolationTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawDifferingInterpolationTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawDiscardRectanglesTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawDiscardRectanglesTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawExplicitVertexParameterTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawExplicitVertexParameterTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawGroupParams.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawImageObjectUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawImageObjectUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawIndexedTest.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawIndexedTest.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawIndirectTest.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawIndirectTest.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawInstancedTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawInstancedTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawInvertedDepthRangesTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawInvertedDepthRangesTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawMultiExtTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawMultiExtTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawMultipleClearsWithinRenderPass.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawMultipleClearsWithinRenderPass.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawMultipleInterpolationTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawMultipleInterpolationTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawMultisampleLinearInterpolationTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawMultisampleLinearInterpolationTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawNegativeViewportHeightTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawNegativeViewportHeightTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawOHOSNativeBufferTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawOHOSNativeBufferTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawOutputLocationTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawOutputLocationTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawSampleAttributeTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawSampleAttributeTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawScissorTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawScissorTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawShaderDrawParametersTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawShaderDrawParametersTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawShaderInvocationTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawShaderInvocationTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawShaderLayerTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawShaderLayerTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawShaderViewportIndexTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawShaderViewportIndexTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawSimpleTest.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawSimpleTest.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawTestCaseUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw/vktDrawTests.hpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs +=
+      [ "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/draw" ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan:libdeqp_vkutil",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  ]
+  external_deps = [ "graphic_surface:surface" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_draw_config" ]
+}
+ohos_static_library("libdeqp_vk_draw") {
+  deps = [ ":deqp_vk_draw_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}
