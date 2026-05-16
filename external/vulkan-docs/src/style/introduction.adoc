@@ -1,0 +1,138 @@
+// Copyright 2014-2025 The Khronos Group Inc.
+//
+// SPDX-License-Identifier: CC-BY-4.0
+
+[[introduction]]
+= Introduction
+
+This document contains required procedures and conventions when writing
+documentation for new Vulkan APIs, extensions and layers, or related
+Khronos^{reg}^ documentation such as proposals.
+These are collectively referred to as _Vulkan Documentation_ or just
+_documentation_ below.
+The primary focus is the API Specification and API extensions, although most
+of this document is equally applicable to other documentation.
+
+[NOTE]
+====
+The custom asciidoctor macros described in the <<markup-macros, Markup
+Macros and Normative Terminology>> section are only available in the actual
+Vulkan Specification, not in proposals and other documents.
+For those documents only pure asciidoc markup may be used, in order that
+they be renderable in the web view provided by GitHub and Gitlab.
+====
+
+The primary purpose is to achieve consistency across the API, as well as
+across all of our source and output documents.
+Consistency makes it easier for developers, editors, reviewers, and users of
+our documentation to understand and modify it.
+
+This document is now formally voted on and approved by the Vulkan Working
+Group.
+This means that unless explicitly stated otherwise, the procedures and
+conventions must be followed.
+If you have a strong desire to modify the procedures and conventions, such
+changes must be made through the normal Vulkan Working Group processes.
+
+
+[[introduction-terminology]]
+== Terminology
+
+The key words *must*, *required*, *should*, *recommend*, *may*, and
+*optional* in this document are to be interpreted as described in RFC 2119
+and by the Vulkan Specification in the "`Terminology`" section.
+
+
+[[introduction-structure]]
+== Document Structure
+
+The style guide is broken into four sections:
+
+  * <<naming,API Naming Conventions>> - the required rules for choosing
+    names of Vulkan identifiers of all types.
+  * <<extensions,Extensions and Layers>> - the required procedures for
+    creating formal Vulkan extensions and layers.
+  * <<markup,Markup Style>> - the required and recommended markup style for
+    writing asciidoc and XML source that follows consistent formatting and
+    layout guidelines, tags special terms and phrases for proper processing
+    by the spec generation tools, etc.
+  * <<writing,Writing Style>> - the required and recommended writing style
+    for overall and fine-grained structure and conventions, normative
+    language use, API naming conventions, common words and phrases to use
+    and to avoid, linking and cross-referencing, etc.
+
+
+[[introduction-asciidoc]]
+== Asciidoc Markup
+
+Vulkan Documentation is primarily written in
+link:https://docs.asciidoctor.org/asciidoctor/latest/[Asciidoc], a text
+markup language.
+We process asciidoc using the command-line
+link:https://docs.asciidoctor.org/asciidoctor/latest/[`asciidoctor`]
+application, as well as with
+link:https://github.com/asciidoctor/asciidoctor.js[`asciidoctor.js`] when
+building the integrated Vulkan documentation site.
+
+Asciidoctor is implemented in Ruby (https://www.ruby-lang.org/), which is
+available for Linux, MacOS, and Microsoft Windows.
+Asciidoctor.js is a Javascript implementation transpiled from asciidoctor.
+
+[NOTE]
+====
+Additional implementations of asciidoc exist including
+link:https://github.com/asciidoctor/asciidoctorj[`AsciidoctorJ`] and the
+builtin GitHub and GitLab preview renderers.
+Live preview extensions exist for Chrome and Firefox.
+
+However, because of the use of custom macros in the Vulkan Specification
+toolchain, and the high complexity of the documents and toolchain used to
+generate it, these web tools cannot currently render the Specification from
+source.
+Instead, we generate HTML and PDF versions of the Specification and publish
+them on the Khronos website.
+
+The Asciidoctor toolchain and build process are not addressed by this
+document, which concentrates solely on source documents.
+====
+
+
+[[introduction-normative]]
+== Normative References
+
+Normative references are references to external documents or resources to
+which documentation authors must comply.
+
+[[acm-references]]
+Association for Computing Machinery.
+_Citation Style and Reference Formats_.
+Retrieved July 27, 2019.
+https://www.acm.org/publications/authors/reference-formatting .
+
+[[iso-8601]]
+International Organization for Standardization.
+_Data elements and interchange formats -- Information interchange --
+Representation of dates and times_ (2004-12-01).
+https://www.iso.org/standard/40874.html .
+Also see https://www.w3.org/QA/Tips/iso-date for colloquial examples.
+
+[[vulkan-docs]]
+Khronos Vulkan Working Group.
+`KhronosGroup/Vulkan-Docs` project on GitHub (July 5, 2016).
+https://github.com/KhronosGroup/Vulkan-Docs .
+
+[[vulkan-registry]]
+Jon Leech.
+_The Khronos Vulkan API Registry_ (December 2, 2024).
+https://registry.khronos.org/vulkan/specs/latest/registry.html .
+
+[[vulkan-spec]]
+Khronos Vulkan Working Group.
+_Vulkan 1.4 - A Specification_.
+https://registry.khronos.org/vulkan/ .
+
+Version 1.4.303 (December 2, 2024) is the latest patch release of the Vulkan
+API Specification as of the time this reference was last updated, but the
+Specification is frequently updated with minor bugfixes and clarifications.
+When a more recent patch release is made, it becomes the normative reference
+for the API.

@@ -1,0 +1,35 @@
+# Copyright 2022-2025 The Khronos Group Inc.
+# SPDX-License-Identifier: CC-BY-4.0
+# Spec words
+imbed
+imbedded
+imbedding
+inout
+lod
+pevent
+pevents
+pixelx
+uscaled
+# Markup/script/style guide words
+captable
+crate
+implementor
+implementors
+rouge
+shouldnot
+tesselation
+# Proper names
+alis
+benj
+blok
+calle
+devault
+ser
+labour
+morrisette
+# proposals/ words
+pares
+# vk.xml words
+halfs
+# Errors in codespell dictionaries
+aesthetically

@@ -1,0 +1,625 @@
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Test<sup>®</sup> 1.2.3 - (with VK_KHR_copy_commands2, VK_KHR_get_physical_device_properties2)</h1>
+<div class="details">
+<span id="author" class="author">The Khronos<sup>®</sup> Vulkan Working Group</span><br>
+<span id="revnumber">version 1.2.3,</span>
+<span id="revdate">"2100-11-22 00:33:44Z"</span>
+<br><span id="revremark">"test build"</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#preamble">1. Preamble</a></li>
+<li><a href="#lorem">2. Lorem</a>
+<ul class="sectlevel2">
+<li><a href="#lorem-subchapter">2.1. Lorem Subchapter</a></li>
+</ul>
+</li>
+<li><a href="#extensions">Layers &amp; Extensions (Informative)</a>
+<ul class="sectlevel2">
+<li><a href="#_extension_dependencies">Extension Dependencies</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="loading_msg" class="hidden" hidden><p>Loading&hellip; please wait.</p></div>
+<!--ChunkedSearchboxMarker-->
+<div id="content" class="loadable" ><script>hideLoadableContent();</script>
+<div id="preamble">
+<div class="sectionbody">
+<!-- toc disabled -->
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="preamble"><a class="anchor" href="#preamble"></a>1. Preamble</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright 2014-2025 The Khronos Group Inc.</p>
+</div>
+<div class="paragraph">
+<p>This Specification is protected by copyright laws and contains material
+proprietary to Khronos. Except as described by these terms, it or any
+components may not be reproduced, republished, distributed, transmitted,
+displayed, broadcast or otherwise exploited in any manner without the
+express prior written permission of Khronos.</p>
+</div>
+<div class="paragraph">
+<p>Khronos grants a conditional copyright license to use and reproduce the
+unmodified Specification for any purpose, without fee or royalty, EXCEPT no
+licenses to any patent, trademark or other intellectual property rights are
+granted under these terms.</p>
+</div>
+<div class="paragraph">
+<p>Khronos makes no, and expressly disclaims any, representations or
+warranties, express or implied, regarding this Specification, including,
+without limitation: merchantability, fitness for a particular purpose,
+non-infringement of any intellectual property, correctness, accuracy,
+completeness, timeliness, and reliability. Under no circumstances will
+Khronos, or any of its Promoters, Contributors or Members, or their
+respective partners, officers, directors, employees, agents or
+representatives be liable for any damages, whether direct, indirect, special
+or consequential damages for lost revenues, lost profits, or otherwise,
+arising from or in connection with these materials.</p>
+</div>
+<div class="paragraph">
+<p>This document contains extensions which are not ratified by Khronos, and as
+such is not a ratified Specification, though it contains text from (and is a
+superset of) the ratified Specification.</p>
+</div>
+<div class="paragraph">
+<p>The ratified version of the Vulkan Specification can be found at <a href="https://registry.khronos.org/vulkan/specs/latest-ratified/pdf/vkspec.pdf" class="bare">https://registry.khronos.org/vulkan/specs/latest-ratified/pdf/vkspec.pdf</a>
+(core with all ratified extensions).</p>
+</div>
+<div class="paragraph">
+<p>This Specification contains substantially unmodified functionality from, and
+is a successor to, Khronos specifications including
+OpenGL, OpenGL ES and OpenCL.</p>
+</div>
+<div class="paragraph">
+<p>The Khronos Intellectual Property Rights Policy defines the terms 'Scope',
+'Compliant Portion', and 'Necessary Patent Claims'.</p>
+</div>
+<div class="paragraph">
+<p>Some parts of this Specification are purely informative and so are EXCLUDED
+the Scope of this Specification. The <a href="#introduction-conventions">[introduction-conventions]</a> section of
+the <a href="#introduction">[introduction]</a> defines how these parts of the Specification are
+identified.</p>
+</div>
+<div class="paragraph">
+<p>Where this Specification uses <a href="#introduction-technical-terminology">technical terminology</a>, defined in the <a href="#glossary">Glossary</a> or otherwise,
+that refer to enabling technologies that are not expressly set forth in this
+Specification, those enabling technologies are EXCLUDED from the Scope of
+this Specification. For clarity, enabling technologies not disclosed with
+particularity in this Specification (e.g. semiconductor manufacturing
+technology, hardware architecture, processor architecture or
+microarchitecture, memory architecture, compiler technology, object oriented
+technology, basic operating system technology, compression technology,
+algorithms, and so on) are NOT to be considered expressly set forth; only
+those application program interfaces and data structures disclosed with
+particularity are included in the Scope of this Specification.</p>
+</div>
+<div class="paragraph">
+<p>For purposes of the Khronos Intellectual Property Rights Policy as it
+relates to the definition of Necessary Patent Claims, all recommended or
+optional features, behaviors and functionality set forth in this
+Specification, if implemented, are considered to be included as Compliant
+Portions.</p>
+</div>
+<div class="paragraph">
+<p>Where this Specification identifies specific sections of external
+references, only those specifically identified sections define
+<a href="#introduction-normative-references">normative</a>
+functionality. The Khronos Intellectual Property Rights Policy excludes
+external references to materials and associated enabling technology not
+created by Khronos from the Scope of this Specification, and any licenses
+that may be required to implement such referenced materials and associated
+technologies must be obtained separately and may involve royalty payments.</p>
+</div>
+<div class="paragraph">
+<p>Khronos and Vulkan are registered trademarks, and SPIR-V is a trademark of
+The Khronos Group Inc. OpenCL is a trademark of Apple Inc., used under
+license by Khronos. OpenGL is a registered trademark and the OpenGL ES logo
+is a trademark of Hewlett Packard Enterprise, used under license by Khronos.
+ASTC is a trademark of ARM Holdings PLC. All other product names,
+trademarks, and/or company names are used solely for identification and
+belong to their respective owners.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lorem"><a class="anchor" href="#lorem"></a>2. Lorem</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Congue eu consequat ac felis donec
+et odio. Enim nec dui nunc mattis enim. Nulla facilisi etiam dignissim diam
+quis enim lobortis scelerisque fermentum. Nam libero justo laoreet sit amet.
+Lacus luctus accumsan tortor posuere. Ultrices tincidunt arcu non sodales. Ut
+enim blandit volutpat maecenas volutpat blandit aliquam etiam. Sed id semper
+risus in. Natoque penatibus et magnis dis parturient montes.</p>
+</div>
+<div class="paragraph">
+<p>Vestibulum morbi blandit cursus risus at ultrices mi tempus imperdiet.
+Dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu. Ultricies
+mi eget mauris pharetra.  Ac turpis egestas maecenas pharetra convallis posuere
+morbi leo urna. Cras sed felis eget velit aliquet. Sit amet mauris commodo quis
+imperdiet. Malesuada pellentesque elit eget gravida cum sociis natoque.
+Faucibus pulvinar elementum integer enim neque volutpat ac tincidunt vitae.</p>
+</div>
+<div class="sect2">
+<h3 id="lorem-subchapter"><a class="anchor" href="#lorem-subchapter"></a>2.1. Lorem Subchapter</h3>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Sed risus pretium quam vulputate dignissim suspendisse in est ante:</p>
+</div>
+<div id="vkCmdCopyBufferToImage2KHR" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by VK_KHR_copy_commands2</span>
+<span class="kt">void</span> <span class="nf">vkCmdCopyBufferToImage2KHR</span><span class="p">(</span>
+    <span class="n">VkCommandBuffer</span>                             <span class="n">commandBuffer</span><span class="p">,</span>
+    <span class="k">const</span> <span class="n">VkCopyBufferToImageInfo2</span><span class="o">*</span>             <span class="n">pCopyBufferToImageInfo</span><span class="p">);</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>commandBuffer</code> Mauris commodo quis imperdiet massa tincidunt nunc pulvinar.</p>
+</li>
+<li>
+<p><code>pCopyBufferToImageInfo</code> Odio morbi quis commodo odio aenean sed <a href="#VkCopyBufferToImageInfo2">VkCopyBufferToImageInfo2</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ac tortor dignissim convallis aenean et tortor. Amet porttitor eget dolor morbi
+non arcu. Consequat interdum varius sit amet. Tempus egestas sed sed risus
+pretium quam. Gravida in fermentum et sollicitudin ac orci phasellus egestas.
+Nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum.
+Tempus quam pellentesque nec nam aliquam. A pellentesque sit amet porttitor
+eget. Viverra justo nec ultrices dui sapien eget mi. Nullam vehicula ipsum a
+arcu. Amet volutpat consequat mauris nunc congue nisi. Tincidunt arcu non
+sodales neque.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-vkCmdCopyBufferToImage2-commandBuffer-97737" href="#VUID-vkCmdCopyBufferToImage2-commandBuffer-97737"></a> <span class="vuid">VUID-vkCmdCopyBufferToImage2-commandBuffer-97737</span><br>
+
+If the queue family used to create the <a href="#VkCommandPool">VkCommandPool</a> which
+<code>commandBuffer</code> was allocated from does not support
+<code>VK_QUEUE_GRAPHICS_BIT</code> or <code>VK_QUEUE_COMPUTE_BIT</code>, the
+<code>bufferOffset</code> member of any element of <code>pCopyBufferToImageInfo-&gt;pRegions</code> <strong class="purple">must</strong> be a
+multiple of <code>4</code></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdCopyBufferToImage2-imageOffset-97738" href="#VUID-vkCmdCopyBufferToImage2-imageOffset-97738"></a> <span class="vuid">VUID-vkCmdCopyBufferToImage2-imageOffset-97738</span><br>
+
+The <code>imageOffset</code> and <code>imageExtent</code> members of each element of
+<code>pCopyBufferToImageInfo-&gt;pRegions</code> <strong class="purple">must</strong> respect the image transfer granularity requirements
+of <code>commandBuffer</code>&#8217;s command pool&#8217;s queue family, as described in
+<a href="#VkQueueFamilyProperties">VkQueueFamilyProperties</a></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdCopyBufferToImage2-commandBuffer-97739" href="#VUID-vkCmdCopyBufferToImage2-commandBuffer-97739"></a> <span class="vuid">VUID-vkCmdCopyBufferToImage2-commandBuffer-97739</span><br>
+
+If the queue family used to create the <a href="#VkCommandPool">VkCommandPool</a> which
+<code>commandBuffer</code> was allocated from does not support
+<code>VK_QUEUE_GRAPHICS_BIT</code>, for each element of <code>pCopyBufferToImageInfo-&gt;pRegions</code>, the
+<code>aspectMask</code> member of <code>imageSubresource</code> <strong class="purple">must</strong> not be
+<code>VK_IMAGE_ASPECT_DEPTH_BIT</code> or <code>VK_IMAGE_ASPECT_STENCIL_BIT</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-vkCmdCopyBufferToImage2-commandBuffer-parameter" href="#VUID-vkCmdCopyBufferToImage2-commandBuffer-parameter"></a> <span class="vuid">VUID-vkCmdCopyBufferToImage2-commandBuffer-parameter</span><br>
+ <code>commandBuffer</code> <strong class="purple">must</strong> be a valid <a href="#VkCommandBuffer">VkCommandBuffer</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdCopyBufferToImage2-pCopyBufferToImageInfo-parameter" href="#VUID-vkCmdCopyBufferToImage2-pCopyBufferToImageInfo-parameter"></a> <span class="vuid">VUID-vkCmdCopyBufferToImage2-pCopyBufferToImageInfo-parameter</span><br>
+ <code>pCopyBufferToImageInfo</code> <strong class="purple">must</strong> be a valid pointer to a valid <a href="#VkCopyBufferToImageInfo2">VkCopyBufferToImageInfo2</a> structure</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdCopyBufferToImage2-commandBuffer-recording" href="#VUID-vkCmdCopyBufferToImage2-commandBuffer-recording"></a> <span class="vuid">VUID-vkCmdCopyBufferToImage2-commandBuffer-recording</span><br>
+ <code>commandBuffer</code> <strong class="purple">must</strong> be in the <a href="#commandbuffers-lifecycle">recording state</a></p>
+</li>
+<li>
+<p><a id="VUID-vkCmdCopyBufferToImage2-commandBuffer-cmdpool" href="#VUID-vkCmdCopyBufferToImage2-commandBuffer-cmdpool"></a> <span class="vuid">VUID-vkCmdCopyBufferToImage2-commandBuffer-cmdpool</span><br>
+ The <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong class="purple">must</strong> support transfer, graphics, or compute operations</p>
+</li>
+<li>
+<p><a id="VUID-vkCmdCopyBufferToImage2-renderpass" href="#VUID-vkCmdCopyBufferToImage2-renderpass"></a> <span class="vuid">VUID-vkCmdCopyBufferToImage2-renderpass</span><br>
+ This command <strong class="purple">must</strong> only be called outside of a render pass instance</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Host Synchronization</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Host access to <code>commandBuffer</code> <strong class="purple">must</strong> be externally synchronized</p>
+</li>
+<li>
+<p>Host access to the <code>VkCommandPool</code> that <code>commandBuffer</code> was allocated from <strong class="purple">must</strong> be externally synchronized</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Command Properties</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><a href="#VkCommandBufferLevel">Command Buffer Levels</a></th>
+<th class="tableblock halign-left valign-top"><a href="#vkCmdBeginRenderPass">Render Pass Scope</a></th>
+<th class="tableblock halign-left valign-top"><a href="#VkQueueFlagBits">Supported Queue Types</a></th>
+<th class="tableblock halign-left valign-top"><a href="#fundamentals-queueoperation-command-types">Command Type</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Primary<br>
+Secondary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Outside</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transfer<br>
+Graphics<br>
+Compute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Action</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Sed risus pretium quam vulputate dignissim suspendisse in est ante <code>VkCopyBufferToImageInfo2</code>:</p>
+</div>
+<div id="VkCopyBufferToImageInfo2" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">VkCopyBufferToImageInfo2</span> <span class="p">{</span>
+    <span class="n">VkStructureType</span>              <span class="n">sType</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                  <span class="n">pNext</span><span class="p">;</span>
+    <span class="n">VkBuffer</span>                     <span class="n">srcBuffer</span><span class="p">;</span>
+    <span class="n">VkImage</span>                      <span class="n">dstImage</span><span class="p">;</span>
+    <span class="n">VkImageLayout</span>                <span class="n">dstImageLayout</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                     <span class="n">regionCount</span><span class="p">;</span>
+    <span class="k">const</span> <span class="n">VkBufferImageCopy2</span><span class="o">*</span>    <span class="n">pRegions</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">VkCopyBufferToImageInfo2</span><span class="p">;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or the equivalent</p>
+</div>
+<div id="VkCopyBufferToImageInfo2KHR" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by VK_KHR_copy_commands2</span>
+<span class="k">typedef</span> <span class="n">VkCopyBufferToImageInfo2</span> <span class="n">VkCopyBufferToImageInfo2KHR</span><span class="p">;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sType</code> Natoque penatibus et magnis dis parturient montes nascetur.</p>
+</li>
+<li>
+<p><code>pNext</code> Iaculis eu non diam phasellus vestibulum.</p>
+</li>
+<li>
+<p><code>srcBuffer</code> Consequat nisl vel pretium lectus quam.</p>
+</li>
+<li>
+<p><code>dstImage</code> Euismod in pellentesque massa placerat duis ultricies lacus sed turpis.</p>
+</li>
+<li>
+<p><code>dstImageLayout</code> Ullamcorper eget nulla facilisi etiam dignissim diam quis enim.</p>
+</li>
+<li>
+<p><code>regionCount</code> Vel facilisis volutpat est velit egestas dui.</p>
+</li>
+<li>
+<p><code>pRegions</code> Consequat id porta nibh venenatis cras sed felis.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-pRegions-94565" href="#VUID-VkCopyBufferToImageInfo2-pRegions-94565"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-pRegions-94565</span><br>
+
+Id velit ut tortor pretium viverra suspendisse potenti <code>pRegions</code>
+<code>imageSubresource</code> eu facilisis sed <strong class="purple">must</strong> odio morbi quis commodo
+<code>dstImage</code></p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-dstImage-97965" href="#VUID-VkCopyBufferToImageInfo2-dstImage-97965"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-dstImage-97965</span><br>
+
+If <code>dstImage</code> is non-sparse then it <strong class="purple">must</strong> be bound completely
+and contiguously to a single <code>VkDeviceMemory</code> object</p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-imageSubresource-97967" href="#VUID-VkCopyBufferToImageInfo2-imageSubresource-97967"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-imageSubresource-97967</span><br>
+
+The <code>imageSubresource.mipLevel</code> member of each element of
+<code>pRegions</code> <strong class="purple">must</strong> be less than the <code>mipLevels</code> specified in
+<a href="#VkImageCreateInfo">VkImageCreateInfo</a> when <code>dstImage</code> was created</p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-imageSubresource-97968" href="#VUID-VkCopyBufferToImageInfo2-imageSubresource-97968"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-imageSubresource-97968</span><br>
+
+The <span class="eq"><code>imageSubresource.baseArrayLayer</code> + 
+<code>imageSubresource.layerCount</code></span> of each element of <code>pRegions</code>
+<strong class="purple">must</strong> be less than or equal to the <code>arrayLayers</code> specified in
+<a href="#VkImageCreateInfo">VkImageCreateInfo</a> when <code>dstImage</code> was created</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-bufferRowLength-99101" href="#VUID-VkCopyBufferToImageInfo2-bufferRowLength-99101"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-bufferRowLength-99101</span><br>
+
+<code>bufferRowLength</code> <strong class="purple">must</strong> be <code>0</code>, or greater than or equal to the
+<code>width</code> member of <code>imageExtent</code></p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-bufferImageHeight-99102" href="#VUID-VkCopyBufferToImageInfo2-bufferImageHeight-99102"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-bufferImageHeight-99102</span><br>
+
+<code>bufferImageHeight</code> <strong class="purple">must</strong> be <code>0</code>, or greater than or equal to the
+<code>height</code> member of <code>imageExtent</code></p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-aspectMask-99103" href="#VUID-VkCopyBufferToImageInfo2-aspectMask-99103"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-aspectMask-99103</span><br>
+
+The <code>aspectMask</code> member of <code>imageSubresource</code> <strong class="purple">must</strong> only have a
+single bit set</p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-imageExtent-96659" href="#VUID-VkCopyBufferToImageInfo2-imageExtent-96659"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-imageExtent-96659</span><br>
+
+<code>imageExtent.width</code> <strong class="purple">must</strong> not be 0</p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-imageExtent-96660" href="#VUID-VkCopyBufferToImageInfo2-imageExtent-96660"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-imageExtent-96660</span><br>
+
+<code>imageExtent.height</code> <strong class="purple">must</strong> not be 0</p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-imageExtent-96661" href="#VUID-VkCopyBufferToImageInfo2-imageExtent-96661"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-imageExtent-96661</span><br>
+
+<code>imageExtent.depth</code> <strong class="purple">must</strong> not be 0</p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-pRegions-96223" href="#VUID-VkCopyBufferToImageInfo2-pRegions-96223"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-pRegions-96223</span><br>
+
+Id leo in vitae turpis massa sed elementum
+<code>imageOffset.x</code> and <span class="eq">(<code>imageExtent.width</code> + 
+<code>imageOffset.x</code>)</span> <strong class="purple">must</strong> gravida dictum fusce ut placerat orci nulla
+pellentesque dignissim enim <code>imageSubresource</code> of <code>dstImage</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-sType-sType" href="#VUID-VkCopyBufferToImageInfo2-sType-sType"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-sType-sType</span><br>
+ <code>sType</code> <strong class="purple">must</strong> be <code>VK_STRUCTURE_TYPE_COPY_BUFFER_TO_IMAGE_INFO_2</code></p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-pNext-pNext" href="#VUID-VkCopyBufferToImageInfo2-pNext-pNext"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-pNext-pNext</span><br>
+ <code>pNext</code> <strong class="purple">must</strong> be <code>NULL</code></p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-srcBuffer-parameter" href="#VUID-VkCopyBufferToImageInfo2-srcBuffer-parameter"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-srcBuffer-parameter</span><br>
+ <code>srcBuffer</code> <strong class="purple">must</strong> be a valid <a href="#VkBuffer">VkBuffer</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-dstImage-parameter" href="#VUID-VkCopyBufferToImageInfo2-dstImage-parameter"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-dstImage-parameter</span><br>
+ <code>dstImage</code> <strong class="purple">must</strong> be a valid <a href="#VkImage">VkImage</a> handle</p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-dstImageLayout-parameter" href="#VUID-VkCopyBufferToImageInfo2-dstImageLayout-parameter"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-dstImageLayout-parameter</span><br>
+ <code>dstImageLayout</code> <strong class="purple">must</strong> be a valid <a href="#VkImageLayout">VkImageLayout</a> value</p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-pRegions-parameter" href="#VUID-VkCopyBufferToImageInfo2-pRegions-parameter"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-pRegions-parameter</span><br>
+ <code>pRegions</code> <strong class="purple">must</strong> be a valid pointer to an array of <code>regionCount</code> valid <a href="#VkBufferImageCopy2">VkBufferImageCopy2</a> structures</p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-regionCount-arraylength" href="#VUID-VkCopyBufferToImageInfo2-regionCount-arraylength"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-regionCount-arraylength</span><br>
+ <code>regionCount</code> <strong class="purple">must</strong> be greater than <code>0</code></p>
+</li>
+<li>
+<p><a id="VUID-VkCopyBufferToImageInfo2-commonparent" href="#VUID-VkCopyBufferToImageInfo2-commonparent"></a> <span class="vuid">VUID-VkCopyBufferToImageInfo2-commonparent</span><br>
+ Both of <code>dstImage</code>, and <code>srcBuffer</code> <strong class="purple">must</strong> have been created, allocated, or retrieved from the same <a href="#VkDevice">VkDevice</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>Gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim <a href="#vkCmdCopyBufferToImage2KHR">vkCmdCopyBufferToImage2KHR</a>:</p>
+</div>
+<div id="VkBufferImageCopy2" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="k">typedef</span> <span class="k">struct</span> <span class="nc">VkBufferImageCopy2</span> <span class="p">{</span>
+    <span class="n">VkStructureType</span>             <span class="n">sType</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">void</span><span class="o">*</span>                 <span class="n">pNext</span><span class="p">;</span>
+    <span class="n">VkDeviceSize</span>                <span class="n">bufferOffset</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                    <span class="n">bufferRowLength</span><span class="p">;</span>
+    <span class="kt">uint32_t</span>                    <span class="n">bufferImageHeight</span><span class="p">;</span>
+    <span class="n">VkImageSubresourceLayers</span>    <span class="n">imageSubresource</span><span class="p">;</span>
+    <span class="n">VkOffset3D</span>                  <span class="n">imageOffset</span><span class="p">;</span>
+    <span class="n">VkExtent3D</span>                  <span class="n">imageExtent</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">VkBufferImageCopy2</span><span class="p">;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or the equivalent</p>
+</div>
+<div id="VkBufferImageCopy2KHR" class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="c++"><span class="c1">// Provided by VK_KHR_copy_commands2</span>
+<span class="k">typedef</span> <span class="n">VkBufferImageCopy2</span> <span class="n">VkBufferImageCopy2KHR</span><span class="p">;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>sType</code> Tristique senectus et netus et malesuada.</p>
+</li>
+<li>
+<p><code>pNext</code> Tempor commodo ullamcorper a lacus vestibulum sed arcu.</p>
+</li>
+<li>
+<p><code>bufferOffset</code> Tellus in metus vulputate eu scelerisque. Lectus sit amet est placerat in.</p>
+</li>
+<li>
+<p><code>bufferRowLength</code> and <code>bufferImageHeight</code> Quam adipiscing vitae
+proin sagittis. Mattis pellentesque id nibh tortor id aliquet lectus proin
+nibh <code>imageExtent</code>.</p>
+</li>
+<li>
+<p><code>imageSubresource</code> Sociis natoque penatibus et magnis dis parturient montes nascetur.</p>
+</li>
+<li>
+<p><code>imageOffset</code> Lobortis mattis aliquam faucibus purus in massa tempor nec.</p>
+</li>
+<li>
+<p><code>imageExtent</code> Ut ornare lectus sit amet est placerat in.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Integer quis auctor elit sed vulputate mi sit amet mauris. Ultrices sagittis
+orci a scelerisque purus semper eget duis.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkBufferImageCopy2-bufferRowLength-99101" href="#VUID-VkBufferImageCopy2-bufferRowLength-99101"></a> <span class="vuid">VUID-VkBufferImageCopy2-bufferRowLength-99101</span><br>
+
+<code>bufferRowLength</code> <strong class="purple">must</strong> be <code>0</code>, or greater than or equal to the
+<code>width</code> member of <code>imageExtent</code></p>
+</li>
+<li>
+<p><a id="VUID-VkBufferImageCopy2-bufferImageHeight-99102" href="#VUID-VkBufferImageCopy2-bufferImageHeight-99102"></a> <span class="vuid">VUID-VkBufferImageCopy2-bufferImageHeight-99102</span><br>
+
+<code>bufferImageHeight</code> <strong class="purple">must</strong> be <code>0</code>, or greater than or equal to the
+<code>height</code> member of <code>imageExtent</code></p>
+</li>
+<li>
+<p><a id="VUID-VkBufferImageCopy2-aspectMask-99103" href="#VUID-VkBufferImageCopy2-aspectMask-99103"></a> <span class="vuid">VUID-VkBufferImageCopy2-aspectMask-99103</span><br>
+
+The <code>aspectMask</code> member of <code>imageSubresource</code> <strong class="purple">must</strong> only have a
+single bit set</p>
+</li>
+<li>
+<p><a id="VUID-VkBufferImageCopy2-imageExtent-96659" href="#VUID-VkBufferImageCopy2-imageExtent-96659"></a> <span class="vuid">VUID-VkBufferImageCopy2-imageExtent-96659</span><br>
+
+<code>imageExtent.width</code> <strong class="purple">must</strong> not be 0</p>
+</li>
+<li>
+<p><a id="VUID-VkBufferImageCopy2-imageExtent-96660" href="#VUID-VkBufferImageCopy2-imageExtent-96660"></a> <span class="vuid">VUID-VkBufferImageCopy2-imageExtent-96660</span><br>
+
+<code>imageExtent.height</code> <strong class="purple">must</strong> not be 0</p>
+</li>
+<li>
+<p><a id="VUID-VkBufferImageCopy2-imageExtent-96661" href="#VUID-VkBufferImageCopy2-imageExtent-96661"></a> <span class="vuid">VUID-VkBufferImageCopy2-imageExtent-96661</span><br>
+
+<code>imageExtent.depth</code> <strong class="purple">must</strong> not be 0</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Valid Usage (Implicit)</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a id="VUID-VkBufferImageCopy2-sType-sType" href="#VUID-VkBufferImageCopy2-sType-sType"></a> <span class="vuid">VUID-VkBufferImageCopy2-sType-sType</span><br>
+ <code>sType</code> <strong class="purple">must</strong> be <code>VK_STRUCTURE_TYPE_BUFFER_IMAGE_COPY_2</code></p>
+</li>
+<li>
+<p><a id="VUID-VkBufferImageCopy2-pNext-pNext" href="#VUID-VkBufferImageCopy2-pNext-pNext"></a> <span class="vuid">VUID-VkBufferImageCopy2-pNext-pNext</span><br>
+ <code>pNext</code> <strong class="purple">must</strong> be <code>NULL</code></p>
+</li>
+<li>
+<p><a id="VUID-VkBufferImageCopy2-imageSubresource-parameter" href="#VUID-VkBufferImageCopy2-imageSubresource-parameter"></a> <span class="vuid">VUID-VkBufferImageCopy2-imageSubresource-parameter</span><br>
+ <code>imageSubresource</code> <strong class="purple">must</strong> be a valid <a href="#VkImageSubresourceLayers">VkImageSubresourceLayers</a> structure</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="extensions"><a class="anchor" href="#extensions"></a>Layers &amp; Extensions (Informative)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cursus euismod quis viverra nibh cras pulvinar.</p>
+</div>
+<div class="sect2">
+<h3 id="_extension_dependencies"><a class="anchor" href="#_extension_dependencies"></a>Extension Dependencies</h3>
+<div class="paragraph">
+<p>Id diam vel quam elementum</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+</body>

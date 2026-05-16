@@ -1,0 +1,17 @@
+// Copyright 2022-2025 The Khronos Group Inc.
+//
+// SPDX-License-Identifier: CC-BY-4.0
+
+// Common Valid Usage
+// Common to drawing commands that are indexed
+  * [[VUID-{refpage}-None-07312]]
+    {empty}
+ifdef::VK_VERSION_1_4,VK_KHR_maintenance6[]
+ifdef::VK_EXT_robustness2,VK_KHR_robustness2[]
+    If the <<features-maintenance6, pname:maintenance6>> feature is not
+    enabled, a
+endif::VK_EXT_robustness2,VK_KHR_robustness2[]
+endif::VK_VERSION_1_4,VK_KHR_maintenance6[]
+ifndef::VK_VERSION_1_4,VK_KHR_maintenance6[A]
+    valid index buffer must: be bound
+// Common Valid Usage

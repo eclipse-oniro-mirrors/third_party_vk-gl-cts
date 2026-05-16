@@ -1,0 +1,9 @@
+(^|[^-_.&:<>\[[:alnum:]])[defst]link:
+(^|[^-_.&:<>\[[:alnum:]])[defpst]name:
+(^|[^-_.&:<>\[[:alnum:]])[efps]text:
+(^|[^-_.&:<>\[[:alnum:]])(basetype|code):[^$]
+(^|[^-_.&:<>\[[:alnum:]])apiext:
+(^|[^-_.&:<>\[[:alnum:]])reflink:
+(^|[^-_.&:<>\[[:alnum:]])(can|cannot|may|must|optional|optionally|required|should|undefined):
+(^|[^-_.&:<>\[[:alnum:]])(attr|tag):
+

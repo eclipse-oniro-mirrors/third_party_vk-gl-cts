@@ -1,0 +1,27 @@
+cmake_minimum_required(VERSION 3.10)
+
+include_directories(
+  ${CMAKE_CURRENT_LIST_DIR}/src/lib
+)
+
+set(VIDEO_GENERATOR_SOURCES
+  ${VIDEO_GENERATOR_SOURCE_DIR}/lib/video_generator.c
+)
+
+set(VIDEO_GENERATOR_HEADERS
+  ${VIDEO_GENERATOR_SOURCE_DIR}/lib/video_generator.h
+)
+
+if(WIN32)
+  add_definitions(-D_CRT_SECURE_NO_WARNINGS)
+endif()
+
+add_library(${VIDEO_GENERATOR_LIB} SHARED ${VIDEO_GENERATOR_SOURCES})
+add_library(${VIDEO_GENERATOR_STATIC_LIB} STATIC ${VIDEO_GENERATOR_SOURCES})
+
+install(TARGETS ${VIDEO_GENERATOR_LIBNAME} ARCHIVE DESTINATION lib)
+install(FILES ${VIDEO_GENERATOR_HEADERS} DESTINATION include)
+
+
+
+

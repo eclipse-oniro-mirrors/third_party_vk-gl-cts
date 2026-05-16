@@ -1,0 +1,108 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external device_generated_commands build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_device_generated_commands_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+}
+
+ohos_source_set("deqp_vk_device_generated_commands_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeConditionalTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeConditionalTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeConditionalTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeConditionalTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeGetInfoTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeGetInfoTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeGetInfoTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeGetInfoTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeLayoutTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeLayoutTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeLayoutTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeLayoutTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeMiscTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeMiscTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeMiscTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeMiscTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputePreprocessTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputePreprocessTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputePreprocessTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputePreprocessTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeSmokeTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeSmokeTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeSmokeTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeSmokeTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeSubgroupTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeSubgroupTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeSubgroupTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCComputeSubgroupTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsConditionalTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsConditionalTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsDrawCountTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsDrawCountTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsDrawTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsDrawTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsMeshConditionalTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsMeshConditionalTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsMeshTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsMeshTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsMiscTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsMiscTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsTessStateRefImages.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsTessStateTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsTessStateTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsXfbTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCGraphicsXfbTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCPropertyTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCPropertyTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCPropertyTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCPropertyTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCRayTracingTestsExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCRayTracingTestsExt.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCUtil.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCUtilCommon.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCUtilCommon.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCUtilExt.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands/vktDGCUtilExt.hpp",
+  ]
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs += [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/device_generated_commands",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/amber",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ray_tracing",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ray_query",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/mesh_shader",
+  ]
+
+  deps = [
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan:libdeqp_vkutil",
+    "//third_party/vk-gl-cts/framework/common:libdeqp_tcutil",
+  ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_device_generated_commands_config" ]
+}
+
+ohos_static_library("libdeqp_vk_device_generated_commands") {
+  deps = [ ":deqp_vk_device_generated_commands_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}

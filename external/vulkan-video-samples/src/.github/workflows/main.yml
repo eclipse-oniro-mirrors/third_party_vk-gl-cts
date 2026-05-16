@@ -1,0 +1,235 @@
+name: "Vulkan-Video-Samples native build"
+run-name: Native build by ${{ github.actor }}
+on:
+  workflow_dispatch:
+  workflow_call:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+env:
+  REPO_NAME: Vulkan-Video-Samples
+  BUILD_JOBS: 16
+
+jobs:
+  Vulkan-Video-Samples-linux:
+    strategy:
+      matrix:
+        platform: [linux-x86_64, linux-x86_64-ffmpeg, linux-x86, linux-cross-aarch64]
+    runs-on: ubuntu-24.04
+
+    env:
+      TERM: dumb
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set i386 environment variables
+        if: matrix.platform == 'linux-x86'
+        run: |
+          echo "CC=cc -m32" >> $GITHUB_ENV
+          echo "CXX=c++ -m32" >> $GITHUB_ENV
+          echo "ASM=as --32" >> $GITHUB_ENV
+          echo "PKG_CONFIG_PATH=/usr/lib/i386-linux-gnu/pkgconfig/" >> $GITHUB_ENV
+
+      - name: Set aarch64 environment variables
+        if: matrix.platform == 'linux-cross-aarch64'
+        run: |
+          echo "CC=aarch64-linux-gnu-gcc" >> $GITHUB_ENV
+          echo "CXX=aarch64-linux-gnu-g++" >> $GITHUB_ENV
+          echo "AR=aarch64-linux-gnu-ar" >> $GITHUB_ENV
+          echo "STRIP=aarch64-linux-gnu-strip" >> $GITHUB_ENV
+          echo "PKG_CONFIG_LIBDIR=/usr/lib/aarch64-linux-gnu/pkgconfig/:/usr/share/pkgconfig" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install --assume-yes --no-install-recommends valgrind python3-pip ninja-build
+          sudo apt install cmake
+          sudo apt install libx11-dev libwayland-dev
+          sudo apt install libavformat-dev
+          sudo apt install libxrandr-dev
+          sudo apt install libvulkan-dev
+
+      - name: Install FFmpeg
+        if: matrix.platform == 'linux-x86_64-ffmpeg'
+        run: |
+          sudo apt install --assume-yes libavformat-dev
+
+      - name: Install i386 dependencies
+        if: matrix.platform == 'linux-x86'
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt update
+          sudo apt install gcc-multilib g++-multilib libc6-dbg:i386
+          # hack to avoid that zlib x64 gets picked up
+          sudo apt remove --assume-yes zlib1g-dev
+          sudo apt install libx11-dev:i386 libwayland-dev:i386
+          sudo apt install libavformat-dev:i386
+          sudo apt install libxrandr-dev:i386
+          sudo apt install libvulkan-dev:i386
+
+      - name: Install aarch64 dependencies
+        if: matrix.platform == 'linux-cross-aarch64'
+        run: |
+          sudo tee /etc/apt/sources.list.d/ubuntu.sources > /dev/null <<EOF
+          Types: deb
+          URIs: http://azure.archive.ubuntu.com/ubuntu
+          Suites: noble noble-updates noble-security
+          Components: main restricted universe multiverse
+          Architectures: amd64 i386
+          Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+          Types: deb
+          URIs: http://azure.ports.ubuntu.com/ubuntu-ports
+          Suites: noble noble-updates noble-security
+          Components: main restricted universe multiverse
+          Architectures: arm64
+          Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+          EOF
+          sudo dpkg --add-architecture arm64
+          sudo apt update
+          sudo apt install crossbuild-essential-arm64
+          sudo apt install libx11-dev:arm64 libwayland-dev:arm64
+          sudo apt install libavformat-dev:arm64
+          sudo apt install libxrandr-dev:arm64
+          sudo apt install libvulkan-dev:arm64
+
+      - name: Build debug
+        shell: bash
+        run: |
+          mkdir BUILD_DEBUG
+          cd BUILD_DEBUG
+          if [ "${{ matrix.platform }}" = "linux-cross-aarch64" ]; then
+            cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=aarch64 ..
+          else
+            cmake -DCMAKE_BUILD_TYPE=Debug ..
+          fi
+          cmake --build . --parallel $BUILD_JOBS --config Debug
+
+      - name: Build release
+        shell: bash
+        run: |
+          mkdir BUILD_RELEASE
+          pushd BUILD_RELEASE
+          if [ "${{ matrix.platform }}" = "linux-cross-aarch64" ]; then
+            cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_SYSTEM_NAME=Linux -DCMAKE_SYSTEM_PROCESSOR=aarch64 ..
+          else
+            cmake -DCMAKE_BUILD_TYPE=Release ..
+          fi
+          cmake --build . --parallel $BUILD_JOBS --config Release
+          mkdir -p release-artifacts
+          popd
+      - name: Install release
+        shell: bash
+        run: |
+          pushd BUILD_RELEASE
+          cmake --install . --prefix ./${{ env.REPO_NAME }}-release
+          popd
+      - name: Create zip
+        shell: bash
+        run: |
+          pushd BUILD_RELEASE
+          zip -r ../${{ env.REPO_NAME }}-release-${{ matrix.platform }}.zip ${{ env.REPO_NAME }}-release/
+          popd
+      - name: Upload linux release
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.REPO_NAME }}-release-${{ matrix.platform }}
+          path: ${{ env.REPO_NAME }}-release-${{ matrix.platform }}.zip
+
+  Vulkan-Video-Samples-win:
+    strategy:
+      matrix:
+        platform: [windows-x64, windows-x64-ffmpeg, win-arm64]
+        include:
+          - platform: windows-x64
+            arch: x64
+            cmake_arch: x64
+          - platform: windows-x64-ffmpeg
+            arch: x64
+            cmake_arch: x64
+          - platform: win-arm64
+            arch: arm64
+            cmake_arch: ARM64
+    runs-on: windows-latest
+
+    steps:
+      - name: Set up MSVC environment
+        if: matrix.arch != 'x64'
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: ${{ matrix.arch }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          choco install --yes zip
+
+      - name: Install python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install FFmpeg
+        if: matrix.platform == 'windows-x64-ffmpeg'
+        run: |
+          # Define the custom installation location
+          $currentDir = pwd
+          $finalDestination = "$currentDir\vk_video_decoder\bin\libs\ffmpeg\win64"
+          echo $finalDestination
+
+          # Create the directory
+          New-Item -ItemType Directory -Force -Path $finalDestination
+
+          # Download FFmpeg static build
+          Invoke-WebRequest -Uri https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip -OutFile ffmpeg.zip
+
+          # Extract FFmpeg to the tmp location
+          $tempExtractPath = "$currentDir\temp\extracted"
+
+          # Extract the entire archive to a temporary folder
+          Expand-Archive -Path ffmpeg.zip -DestinationPath $tempExtractPath -Force
+          Get-ChildItem -Path $tempExtractPath\ffmpeg-master-latest-win64-gpl-shared
+
+          # Get the contents of the first folder in the archive
+          Get-ChildItem -Path $tempExtractPath\ffmpeg-master-latest-win64-gpl-shared | Where-Object { $_.PSIsContainer } | Copy-Item -Destination $finalDestination -Force -Recurse
+          echo "$finalDestination\bin" | Out-File -Encoding ASCII -Append $env:GITHUB_PATH
+
+      - name: Build Debug
+        run: |
+          mkdir BUILD_DEBUG
+          cd BUILD_DEBUG
+          cmake -DCMAKE_GENERATOR_PLATFORM=${{ matrix.cmake_arch }} -DCMAKE_BUILD_TYPE=Debug ..
+          cmake --build . --parallel $BUILD_JOBS --config Debug
+
+      - name: Build Release
+        shell: bash
+        run: |
+            mkdir BUILD_RELEASE
+            pushd BUILD_RELEASE
+            cmake -DCMAKE_GENERATOR_PLATFORM=${{ matrix.cmake_arch }} -DCMAKE_BUILD_TYPE=Release ..
+            cmake --build . --parallel $BUILD_JOBS --config Release
+            mkdir release-artifacts
+      - name: Install Release
+        shell: bash
+        run: |
+            pushd BUILD_RELEASE
+            cmake --install . --prefix ./${{ env.REPO_NAME }}-release --config Release
+            popd
+
+      - name: Create zip
+        shell: bash
+        run: |
+            pushd BUILD_RELEASE
+            zip -r ../${{ env.REPO_NAME }}-release-${{ matrix.platform }}.zip ${{ env.REPO_NAME }}-release
+            popd
+      - name: Upload windows release
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.REPO_NAME }}-release-${{ matrix.platform }}
+          path: ${{ env.REPO_NAME }}-release-${{ matrix.platform }}.zip
