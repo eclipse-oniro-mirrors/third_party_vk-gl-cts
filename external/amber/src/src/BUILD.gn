@@ -1,0 +1,120 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# external glslang src glslang build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("amber_config") {
+  cflags_cc = deqp_common_cflags_cc
+
+  cflags_cc -= [ "-fexceptions" ]
+  cflags_cc += [
+    "-g",
+    "-fPIC",
+    "-fno-exceptions",
+    "-Wno-padded",
+    "-Wno-switch-enum",
+    "-pedantic-errors",
+    "-Wno-c++98-compat",
+    "-Wno-c++98-compat-pedantic",
+    "-Wno-format-pedantic",
+    "-Wno-unknown-warning-option",
+    "-std=gnu++11",
+  ]
+
+  defines = deqp_common_defines
+  defines -= [
+    "DEQP_SUPPORT_DRM=0",
+    "DEQP_TARGET_NAME=\"Default\"",
+  ]
+  defines += [
+    "AMBER_CTS_VULKAN_HEADER=1",
+    "AMBER_ENABLE_CLSPV=0",
+    "AMBER_ENABLE_DXC=0",
+    "AMBER_ENABLE_LODEPNG=1",
+    "AMBER_ENABLE_RTTI=1",
+    "AMBER_ENABLE_SHADERC=0",
+    "AMBER_ENABLE_SPIRV_TOOLS=0",
+    "AMBER_ENGINE_DAWN=0",
+    "AMBER_ENGINE_VULKAN=1",
+  ]
+}
+
+#lib OSDependent
+ohos_source_set("amber_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/amber/src/src/amber.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/amberscript/parser.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/buffer.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/command.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/command_data.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/descriptor_set_and_binding_parser.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/engine.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/executor.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/float16_helper.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/format.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/parser.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/pipeline.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/pipeline_data.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/recipe.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/result.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/sampler.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/script.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/shader.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/shader_compiler.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/sleep.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/tokenizer.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/type.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/type_parser.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/value.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/verifier.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/virtual_file_store.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/vkscript/command_parser.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/vkscript/datum_type_parser.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/vkscript/parser.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/vkscript/section_parser.cc",
+    "//third_party/vk-gl-cts/external/amber/src/src/vulkan_engine_config.cc",
+  ]
+  include_dirs = [
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan",
+    "//third_party/vk-gl-cts/framework/delibs/debase",
+    "//third_party/vk-gl-cts/framework/delibs/decpp",
+    "//third_party/vk-gl-cts/framework/delibs/depool",
+    "//third_party/vk-gl-cts/framework/delibs/dethread",
+    "//third_party/vk-gl-cts/framework/delibs/deutil",
+    "//third_party/vk-gl-cts/framework/delibs/destream",
+    "//third_party/zlib",
+    "//third_party/spirv-headers/include",
+    "//third_party/vk-gl-cts/external/amber/src/include",
+    "//third_party/vk-gl-cts/external/amber/src",
+    "//third_party/vk-gl-cts/external/amber/src/src",
+    "//third_party/vk-gl-cts/build",
+    "//third_party/vk-gl-cts/build/include",
+
+    #"//third_party/vk-gl-cts/build/external/vulkancts/framework/vulkan",
+    "//third_party/vk-gl-cts/external/vulkancts/framework/vulkan/generated/vulkan",
+  ]
+
+  deps = [ "vulkan:libdeqp_amberenginevulkan" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":amber_config" ]
+}
+
+ohos_shared_library("libdeqp_amber") {
+  deps = [ ":amber_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}

@@ -1,0 +1,56 @@
+# Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# deqp external ycbcr build
+
+import("//build/ohos.gni")
+import("//third_party/vk-gl-cts/vk_gl_cts.gni")
+
+config("deqp_vk_ycbcr_config") {
+  cflags_cc = deqp_common_cflags_cc
+  defines = deqp_common_defines
+
+  #defines += [ "_XOPEN_SOURCE=600" ]
+}
+
+ohos_source_set("deqp_vk_ycbcr_source") {
+  sources = [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr/vktYCbCrConversionTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr/vktYCbCrCopyTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr/vktYCbCrFilteringTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr/vktYCbCrFormatTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr/vktYCbCrImageOffsetTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr/vktYCbCrImageOffsetTests.hpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr/vktYCbCrImageQueryTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr/vktYCbCrStorageImageWriteTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr/vktYCbCrTests.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr/vktYCbCrUtil.cpp",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr/vktYCbCrViewTests.cpp",
+  ]
+
+  include_dirs = deqp_vk_common_include_dirs
+  include_dirs += [
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/ycbcr",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/shaderexecutor",
+    "//third_party/vk-gl-cts/external/vulkancts/modules/vulkan/util",
+  ]
+  deps = []
+  part_name = "acts"
+  subsystem_name = "xts"
+  configs = [ ":deqp_vk_ycbcr_config" ]
+}
+ohos_static_library("libdeqp_vk_ycbcr") {
+  deps = [ ":deqp_vk_ycbcr_source" ]
+  part_name = "acts"
+  subsystem_name = "xts"
+}
